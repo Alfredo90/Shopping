@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar/Navbar";
+import Sales from "../components/Sales/Sales";
 import ShopByCategory from "../components/ShopByCategory/ShopByCategory";
 import axios from "axios";
 
@@ -27,9 +28,10 @@ function App() {
 
   console.log(products);
   return (
-    <div className="  bg-[#252422] text-white ">
+    <div className="  bg-[#252422] text-white  w-max  h-max">
       <Navbar />
-      <ShopByCategory  products={products}/>
+      <Sales />
+      <ShopByCategory products={products} />
     </div>
   );
 }

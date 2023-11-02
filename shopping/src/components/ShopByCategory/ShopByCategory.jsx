@@ -10,7 +10,7 @@ const ShopByCategory = ({ products }) => {
 
   console.log(products);
   return (
-    <div className="flex flex-col justify-evenly items-center border-2 h-screen w-screen ">
+    <div className="flex flex-col justify-evenly items-center h-screen w-screen ">
       <hr className="border-2 w-5/6 " />
       <h1 className="text-2xl">Shop By Category</h1>
       <ul className="  flex flex-row gap-20 ">
