@@ -3,6 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar/Navbar";
+import ShopByCategory from "../components/ShopByCategory/ShopByCategory";
 import axios from "axios";
 
 function App() {
@@ -23,22 +24,13 @@ function App() {
 
     fetchData();
   }, []);
-  //   <ul>
-  //   {products.map((product) => (
-  //     <li key={product.id}>
-  //       {/* <img src={product.image} alt="" />
-  //        */}
-  //       {product.category}
-  //     </li>
-  //   ))}
-  // </ul>
+
   console.log(products);
   return (
-    <>
-      <div>
-        <Navbar/>
-      </div>
-    </>
+    <div className="  bg-[#252422] text-white ">
+      <Navbar />
+      <ShopByCategory  products={products}/>
+    </div>
   );
 }
 
