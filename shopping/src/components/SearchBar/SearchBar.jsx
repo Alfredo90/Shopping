@@ -16,10 +16,10 @@ const SearchBar = ({products}) => {
         type="search"
         placeholder="search product..."
       />
-      <ul>
-        {products.filter((product) => product.category.toLowerCase().includes(searchInput.toLowerCase())).map(product => (
+      <ul className=" absolute flex flex-col justify-start items-center bg-[#252422]  ">
+        {products.filter((product) => product.title.toLowerCase().includes(searchInput.toLowerCase())).map(product => (
           searchInput &&
-          <li key={product.id}><a > {product.category}</a></li>
+          <li className=" w-40 h-10  " key={product.id}><a > {product.title}</a></li>
         ))  }
       </ul>
     </div>
