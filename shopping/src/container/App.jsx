@@ -29,7 +29,7 @@ function App() {
   console.log(products);
   return (
     <div className="  bg-[#252422] text-white  w-max  h-max">
-      <Navbar />
+      <Navbar products={products}/>
       <Sales />
       <ShopByCategory products={products} />
     </div>
