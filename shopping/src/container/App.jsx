@@ -2,9 +2,9 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 
+import ListOfProducts from "../components/ListOfProducts/ListOfProducts";
 import Navbar from "../components/Navbar/Navbar";
 import Sales from "../components/Sales/Sales";
-import ShopByCategory from "../components/ShopByCategory/ShopByCategory";
 import axios from "axios";
 
 function App() {
@@ -28,10 +28,13 @@ function App() {
 
   console.log(products);
   return (
-    <div className="  bg-[#252422] text-white  w-max  h-max">
-      <Navbar products={products}/>
+    <div className=" bg-[#252422] text-white  w-full  h-screen">
+      <Navbar products={products} />
       <Sales />
-      <ShopByCategory products={products} />
+      <div className="flex justify-center items-center">
+        <hr className="border-2 mb-10 w-4/5" />
+      </div>
+      <ListOfProducts products={products} />
     </div>
   );
 }

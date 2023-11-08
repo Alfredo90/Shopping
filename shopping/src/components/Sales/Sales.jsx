@@ -2,7 +2,7 @@ import React from "react";
 
 const Sales = () => {
   return (
-    <section className="flex flex-row justify-between items-center w-full h-full px-20 py-10">
+    <section className="flex flex-row justify-between items-center  h-fit px-20 py-10">
       <div className=" border-2 flex flex-col justify-center gap-6 items-center text-left w-96 h-60 ">
         <h1 className="text-4xl">Lorem ipsum </h1>
         <p>
