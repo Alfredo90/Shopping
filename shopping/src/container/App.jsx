@@ -2,21 +2,25 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 
-import ListOfProducts from "../components/ListOfProducts/ListOfProducts";
 import Navbar from "../components/Navbar/Navbar";
 import Sales from "../components/Sales/Sales";
 import axios from "axios";
 
+// import ListOfProducts from "../components/ListOfProducts/ListOfProducts";
+
+
+
+
 function App() {
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("https://fakestoreapi.com/products");
-        setProducts(res.data);
+        const res = await axios.get("https://dummyjson.com/products");
+        setItems(res.data.products);
       } catch (error) {
         console.error(error);
       }
@@ -26,16 +30,18 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(products);
+  console.log(items);
   return (
-    <div className=" bg-[#252422] text-white  w-full  h-screen">
-      <Navbar products={products} />
+    <div className=" bg-[#252422] text-white  w-full  h-full">
+      <Navbar  />
       <Sales />
-      <div className="flex justify-center items-center">
-        <hr className="border-2 mb-10 w-4/5" />
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.title}</li>
+        ))}
+      </ul>
+      {/* <ListOfProducts products={products} /> */}
       </div>
-      <ListOfProducts products={products} />
-    </div>
   );
 }
 
