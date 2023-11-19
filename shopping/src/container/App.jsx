@@ -2,6 +2,7 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 
+import ListOfProducts from "../components/ListOfProducts/ListOfProducts";
 import Navbar from "../components/Navbar/Navbar";
 import Sales from "../components/Sales/Sales";
 import axios from "axios";
@@ -13,14 +14,14 @@ import axios from "axios";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("https://dummyjson.com/products");
-        setItems(res.data.products);
+        const res = await axios.get("https://fakestoreapi.com/products");
+        setProducts(res.data);
       } catch (error) {
         console.error(error);
       }
@@ -30,14 +31,16 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(items);
+
+
+  console.log(products);
   return (
-    <div className=" bg-[#252422] text-white  w-full  h-full">
+    <div className=" bg-[#252422] text-white   h-full">
       <Navbar  />
       <Sales />
-      <ul>
-        {items.map(item => (
-          <li key={item.id}>{item.title}</li>
+      <ul className="flex flex-wrap justify-center items-center gap-6 ">
+        {products.map(product => (
+          <ListOfProducts key={product.id} product={product}/>
         ))}
       </ul>
       {/* <ListOfProducts products={products} /> */}

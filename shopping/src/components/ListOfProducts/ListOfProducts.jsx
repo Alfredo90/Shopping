@@ -1,14 +1,25 @@
 import React from "react";
 
-const ListOfProducts = ({ products }) => {
+const ListOfProducts = ({ product }) => {
   return (
-    <ul className="bg-[#252422] flex flex-wrap justify-center items-center gap-10 " >
-      {products.map((product) => (
-        <li key={product.id} >
-            <img className="w-48 h-48" src={product.image} />
-        </li>
-      ))}
-    </ul>
+    <li >
+      <div className="w-44 h-50  border-2 flex flex-col">
+        <img
+          className="w-44 h-40 "
+          src={product.image}
+          alt="image"
+        />
+      <div className="">
+        {/* <p className=" text-left text-sm">{product.title}</p> */}
+        <p className="text-xs">Price: ${product.price}</p>
+      </div>
+      <div className=" flex justify-end items-center  ">
+        <button className=" bg-cyan-500 w-8 h-8 border-2 rounded-full items-end ">
+          +
+        </button>
+      </div>
+      </div>
+    </li>
   );
 };
 
