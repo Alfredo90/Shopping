@@ -1,6 +1,9 @@
 import React from "react";
 
-const ListOfProducts = ({ product }) => {
+const ListOfProducts = ({ product, addItemToCart }) => {
+
+  const addToCartHandler = () => addItemToCart(product.id)
+
   return (
     <li >
       <div className="w-44 h-50  border-2 flex flex-col">
@@ -14,7 +17,7 @@ const ListOfProducts = ({ product }) => {
         <p className="text-xs">Price: ${product.price}</p>
       </div>
       <div className=" flex justify-end items-center  ">
-        <button className=" bg-cyan-500 w-8 h-8 border-2 rounded-full items-end ">
+        <button onClick={addToCartHandler} className=" bg-cyan-500 w-8 h-8 border-2 rounded-full items-end ">
           +
         </button>
       </div>

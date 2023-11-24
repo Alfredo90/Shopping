@@ -7,14 +7,10 @@ import Navbar from "../components/Navbar/Navbar";
 import Sales from "../components/Sales/Sales";
 import axios from "axios";
 
-// import ListOfProducts from "../components/ListOfProducts/ListOfProducts";
-
-
-
-
 function App() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,20 +27,23 @@ function App() {
     fetchData();
   }, []);
 
+  const addItemToCart =  (cartId) => {
+    products.map(product.id === cartId)
+
+  }
 
 
-  console.log(products);
+  // console.log(products);
   return (
     <div className=" bg-[#252422] text-white   h-full">
-      <Navbar  />
+      <Navbar />
       <Sales />
       <ul className="flex flex-wrap justify-center items-center gap-6 ">
-        {products.map(product => (
-          <ListOfProducts key={product.id} product={product}/>
+        {products.map((product) => (
+          <ListOfProducts key={product.id} product={product} addItemToCart={addItemToCart} />
         ))}
       </ul>
-      {/* <ListOfProducts products={products} /> */}
-      </div>
+    </div>
   );
 }
 
