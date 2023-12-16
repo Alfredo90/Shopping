@@ -18,7 +18,7 @@ const ListOfProducts = ({ product, addToCart}) => {
         <p className="text-xs">Price: ${product.price}</p>
       </div>
       <div className=" flex justify-end items-center  ">
-        <button onClick={() => addToCart(product.id)} className=" bg-cyan-500 w-8 h-8 border-2 rounded-full items-end ">
+        <button onClick={() => addToCart(product)} className=" bg-cyan-500 w-8 h-8 border-2 rounded-full items-end ">
           +
         </button>
       </div>

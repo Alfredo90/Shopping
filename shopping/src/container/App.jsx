@@ -12,9 +12,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1);
 
-  console.log(cartItems)
+  // console.log(cartItems);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,13 +31,16 @@ function App() {
     fetchData();
   }, []);
 
-  const addToCart = (item) => {
-    const productExist = products.find((product) => product.id === item);
-    if (productExist) {
-      setCartItems([...cartItems, productExist,]);
-      setQuantity(quantity + 1)
-  };
-}
+
+  const addToCart = (product) => {
+    const productExist = cartItems.find((item) => item.id === product.id)
+    if (productExist){
+      setCartItems([...cartItems])
+    }else{
+      setCartItems([...cartItems, product])
+    }
+    }
+
 
 
   return (
@@ -46,14 +49,18 @@ function App() {
       <Sales />
       <ul className="flex flex-wrap justify-center items-center gap-6 ">
         {products.map((product) => (
-          <ListOfProducts key={product.id} product={product} addToCart={addToCart} />
-          ))}
+          <ListOfProducts
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
+        ))}
       </ul>
-          <ul>
-            {cartItems.map((item) => (
-              <Cart key={item.id} item={item} quantity={quantity}/>
-            ))}
-          </ul>
+      <ul>
+        {cartItems.map((item) => (
+          <Cart key={item.id} item={item} quantity={quantity} />
+        ))}
+       </ul>
     </div>
   );
 }
