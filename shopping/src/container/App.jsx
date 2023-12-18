@@ -31,16 +31,20 @@ function App() {
     fetchData();
   }, []);
 
-
   const addToCart = (product) => {
-    const productExist = cartItems.find((item) => item.id === product.id)
-    if (productExist){
-      setCartItems([...cartItems])
-    }else{
-      setCartItems([...cartItems, product])
+    const productExist = cartItems.find((item) => item.id === product.id);
+    if (productExist) {
+      setCartItems([...cartItems]);
+    } else {
+      setCartItems([...cartItems, product]);
     }
-    }
+  };
 
+  const deleteFromCart = (id) => {
+    const deleteitem = cartItems.filter((item) => item.id !== id)
+    setCartItems(deleteitem)
+
+  }
 
 
   return (
@@ -58,9 +62,9 @@ function App() {
       </ul>
       <ul>
         {cartItems.map((item) => (
-          <Cart key={item.id} item={item} quantity={quantity} />
+          <Cart key={item.id} item={item} quantity={quantity} deleteFromCart={deleteFromCart} />
         ))}
-       </ul>
+      </ul>
     </div>
   );
 }
