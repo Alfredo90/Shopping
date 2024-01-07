@@ -2,7 +2,6 @@ import "./App.css";
 
 import { useEffect, useState } from "react";
 
-import Cart from "../components/Cart/Cart";
 import ListOfProducts from "../components/ListOfProducts/ListOfProducts";
 import Navbar from "../components/Navbar/Navbar";
 import Sales from "../components/Sales/Sales";
@@ -49,7 +48,7 @@ function App() {
 
   return (
     <div className=" bg-[#252422] text-white h-full">
-      <Navbar />
+      <Navbar cartItems={cartItems} quantity={quantity} deleteFromCart={deleteFromCart}/>
       <Sales />
       <ul className="flex flex-wrap justify-center items-center gap-6 ">
         {products.map((product) => (
@@ -58,11 +57,6 @@ function App() {
             product={product}
             addToCart={addToCart}
           />
-        ))}
-      </ul>
-      <ul>
-        {cartItems.map((item) => (
-          <Cart key={item.id} item={item} quantity={quantity} deleteFromCart={deleteFromCart} />
         ))}
       </ul>
     </div>
